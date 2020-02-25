@@ -4,7 +4,6 @@ import net.navacom.tdd.example.dao.CarRepository;
 import net.navacom.tdd.example.dto.Car;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 @Service
 public class CarService {
@@ -23,7 +22,7 @@ public class CarService {
         return carRepository.getCarsByModel(modelName);
     }
 
-    public void save(Car car) {
-        carRepository.save(car);
+    public Car save(Car car) {
+        return carRepository.save(car);
     }
 }
