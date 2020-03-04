@@ -45,15 +45,18 @@ public class CarControllerTest {
         carList.add(new Car(1l, "oka", "kamaz"));
         carList.add(new Car(2l, "niva", "laba"));
         when(carService.getListCar()).thenReturn(carList);
-        mockMvc.perform(get("/car").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$", hasSize(2))).andDo(print());
+        mockMvc.perform(get("/car")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andDo(print());
     }
     @Test
     void findCarByModelName() throws Exception {
         List<Car> carList = new ArrayList<>();
         carList.add(car);
         when(carService.getCarByModelName("oka")).thenReturn(carList);
-        mockMvc.perform(get("/car/{modelName}", "oka").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/car/{modelName}", "oka")
+                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
